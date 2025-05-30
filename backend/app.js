@@ -9,8 +9,11 @@ const {errorHandler} = require('./middleware/errorMiddleware')
 
 const app = express()
 
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+// parse json format
+app.use(express.json()) 
+
+// for x-www-form-urlencoded
+app.use(express.urlencoded({extended: true}))
 
 app.use('/api/goals',require('./routes/goalsRoutes'))
 app.use(errorHandler)
